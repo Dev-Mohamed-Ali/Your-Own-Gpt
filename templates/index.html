@@ -39,10 +39,33 @@
             $("body").toggleClass("dark-mode");
         }
 
-        function appendMessage(who, message) {
-            $("#chatbox").append(`<p><strong>${who}:</strong> ${message}</p>`);
-            scrollToBottom();
+    var speed = 20;
+
+    function typeWriter(messageElement, message) {
+        var i = 0;
+        function type() {
+            if (i < message.length) {
+                messageElement.innerHTML += message.charAt(i);
+                i++;
+                        scrollToBottom();
+                setTimeout(type, speed);
+            }
         }
+        type();
+    }
+
+    function showTypingMessage(sender, message) {
+        const messageElement = document.createElement("p");
+        messageElement.innerHTML = `<strong>${sender}:</strong> <span class="typing"></span>`;
+        $("#chatbox").append(messageElement);
+        typeWriter(messageElement.lastChild, message); // Start the typing animation for the last span element
+        scrollToBottom();
+    }
+
+    function appendMessage(who, message) {
+        showTypingMessage(who, message);
+    }
+
 
         function getUserInput() {
             return $("#user_input").val();
@@ -112,7 +135,9 @@
             scrollToBottom();
         }
         $(document).ready(function() {
-                 showGreeting();
+            if (!user)
+                showGreeting();
+
             $("#user_input").on("keydown", function(event) {
                 if (event.key === "Enter") {
                     sendMessageToServer();

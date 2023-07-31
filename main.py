@@ -36,9 +36,9 @@ def find_best_match(user_question: str, questions: list[str]) -> str | None:
 
 def get_answer_for_question(question: str, knowledge_base: dict) -> str | None:
     for q in knowledge_base["questions"]:
-        if q["question"].lower() == question.lower():
+        if q["question"] == question:
             return q["answer"]
-    return None
+    return "Bot: I don't know the answer. Can you teach me?"
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -55,6 +55,7 @@ def login():
     #     return redirect(url_for("index"))
     if request.method == "POST":
         session["username"] = request.form["username"]
+        append_message("Bot", "Hello, I'm the Chatbot! How can I help you?")
         return redirect(url_for("index"))
 
     return render_template("login.html")
@@ -89,6 +90,7 @@ def get_chatbot_response():
     user_input = request.json["user_input"]
     append_message(session["username"], user_input)
     response = chatbot(user_input)
+    print("response is %s" % response)
     if response == "Bot: I don't know the answer. Can you teach me?":
         append_message("Chatbot", "Bot: Alright, I understand. Feel free to ask anything else!")
     else:
