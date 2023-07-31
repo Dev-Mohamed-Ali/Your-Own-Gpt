@@ -1,23 +1,18 @@
 import json
-from concurrent.futures import ThreadPoolExecutor
+import time
 
-import numpy as np
-from sentence_transformers import util, SentenceTransformer
-import faiss
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
-import random
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Set a secure secret key for production use
 
-# Load the SentenceTransformer model (for embeddings) - Load it only once
-model = SentenceTransformer('paraphrase-distilroberta-base-v1')
 
-
-# Load the knowledge base from a JSON file - Load it only once
+# Load the knowledge base from a JSON file
 def load_knowledge_base(file_path: str):
     with open(file_path, 'r') as file:
-        data: dict = json.load(file)
+        data = json.load(file)
     return data
 
 
@@ -28,35 +23,20 @@ def save_knowledge_base(file_path: str, data: dict):
 
 
 # Create an index and store the embeddings of knowledge base questions
-def create_knowledge_base_index(knowledge_base: dict, model):
-    knowledge_base_questions = [q["question"] for q in knowledge_base["questions"]]
-    embeddings_all_questions = model.encode(knowledge_base_questions, convert_to_tensor=False)
+def find_best_match(user_question: str, questions: list[str]) -> str | None:
+    vectorizer = TfidfVectorizer()
+    knowledge_base_vectors = vectorizer.fit_transform(questions)
+    user_question_vector = vectorizer.transform([user_question])
 
-    # Convert the list of NumPy arrays into a single NumPy array
-    embeddings_all_questions = np.vstack(embeddings_all_questions)
+    similarity_scores = cosine_similarity(user_question_vector, knowledge_base_vectors)
+    best_match_idx = similarity_scores.argmax()
 
-    index = faiss.IndexFlatIP(model.get_sentence_embedding_dimension())
-    index.add(embeddings_all_questions)
-    return index
-
-
-# Find the closest matching question using sentence embeddings and cosine similarity
-def find_best_match(user_question: str, index, model, knowledge_base: dict) -> str | None:
-    user_embedding = model.encode(user_question, convert_to_tensor=False).reshape(1, -1)
-    _, best_match_indices = index.search(user_embedding, 1)
-
-    best_match_idx = best_match_indices[0][0]
-    best_match_score = util.pytorch_cos_sim(user_embedding, [
-        model.encode(knowledge_base["questions"][best_match_idx]["question"], convert_to_tensor=False)])
-    if best_match_score > 0.5:
-        return knowledge_base["questions"][best_match_idx]["question"]
-    else:
-        return None
+    return questions[best_match_idx] if similarity_scores[0, best_match_idx] > 0 else None
 
 
 def get_answer_for_question(question: str, knowledge_base: dict) -> str | None:
     for q in knowledge_base["questions"]:
-        if q["question"] == question:
+        if q["question"].lower() == question.lower():
             return q["answer"]
     return None
 
@@ -71,6 +51,8 @@ def index():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    # if session["username"]:
+    #     return redirect(url_for("index"))
     if request.method == "POST":
         session["username"] = request.form["username"]
         return redirect(url_for("index"))
@@ -94,24 +76,16 @@ def append_message(who, message):
 
 
 def chatbot(user_input):
-    knowledge_base: dict = load_knowledge_base('knowledge_base.json')
-    index = create_knowledge_base_index(knowledge_base, model)
-
-    # Use multithreading to parallelize sentence embedding and similarity calculation
-    with ThreadPoolExecutor() as executor:
-        future = executor.submit(find_best_match, user_input, index, model, knowledge_base)
-        best_match = future.result()
-
-    if best_match:
-        # If there is a best match, return the answer from the knowledge base
-        answer: str = get_answer_for_question(best_match, knowledge_base)
-        return answer  # Return the answer as it is, without "Bot: " prefix
-    else:
-        return "Bot: I don't know the answer. Can you teach me?"
+    knowledge_base = load_knowledge_base('knowledge_base.json')
+    # Finds the best match using TF-IDF and cosine similarity, otherwise returns None
+    best_match = find_best_match(user_input, [q["question"] for q in knowledge_base["questions"]])
+    answer = get_answer_for_question(best_match, knowledge_base)
+    return answer
 
 
 @app.route("/get_response", methods=["POST"])
 def get_chatbot_response():
+    time.sleep(1)
     user_input = request.json["user_input"]
     append_message(session["username"], user_input)
     response = chatbot(user_input)
@@ -129,13 +103,11 @@ def update_knowledge_base():
 
     # Update the knowledge base with the new answer (not implemented here)
     knowledge_base: dict = load_knowledge_base('knowledge_base.json')
-    index = create_knowledge_base_index(knowledge_base, model)
     knowledge_base["questions"].append({"question": user_input, "answer": new_answer})
-    index.add(model.encode(user_input, convert_to_tensor=False).reshape(1, -1))
     save_knowledge_base('knowledge_base.json', knowledge_base)
     # For demonstration purposes, we will simply acknowledge that the bot has learned something new
     return jsonify("Bot: Thank you! I've learned something new.")
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)

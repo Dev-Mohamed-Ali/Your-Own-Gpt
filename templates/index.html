@@ -47,9 +47,6 @@
         function getUserInput() {
             return $("#user_input").val();
         }
-        function cleanUserInput(user_input) {
-            return user_input.replace(/\?/g, ""); // Remove all question marks
-        }
         function handleChatbotResponse(response,temp_user_input) {
             $("#chatbox p:last-child").remove(); // Remove the "Thinking..." message
 
@@ -89,19 +86,16 @@
             $("#user_input").val(""); // Clear the user input field
             var currentUser = "{{ session['username'] }}";
             appendMessage(currentUser, user_input);
-            // Clean the user input before sending
-            var cleaned_input = cleanUserInput(user_input);
-
             showThinkingMessage();
 
 
             $.ajax({
                 type: "POST",
                 url: "/get_response",
-                data: JSON.stringify({ user_input: cleaned_input }),
+                data: JSON.stringify({ user_input: user_input }),
                 contentType: "application/json;charset=UTF-8",
                 success: function (response) {
-                    handleChatbotResponse(response,cleaned_input);
+                    handleChatbotResponse(response,user_input);
                 }
             });
         }
@@ -109,8 +103,16 @@
         function scrollToBottom() {
             $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
         }
+        // Get the username from the Flask template and pass it to the JavaScript variable
+        var user = "{{ session['username'] }}";
 
+        // Function to display the initial greeting
+        function showGreeting() {
+            $("#chatbox").append(`<p><strong>Chatbot:</strong> Hello ${user}, how can I help you today?</p>`);
+            scrollToBottom();
+        }
         $(document).ready(function() {
+                 showGreeting();
             $("#user_input").on("keydown", function(event) {
                 if (event.key === "Enter") {
                     sendMessageToServer();

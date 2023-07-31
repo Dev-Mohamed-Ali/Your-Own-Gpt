@@ -9,6 +9,10 @@
       "answer": "Hi, how can I assist you today?"
     },
     {
+      "question": "how are you",
+      "answer": "I'm good, how can I assist you today?"
+    },
+    {
       "question": "how old are you",
       "answer": "As a chatbot, I don't have an age. I'm just a program!"
     },
