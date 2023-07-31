@@ -55,7 +55,6 @@ def login():
     #     return redirect(url_for("index"))
     if request.method == "POST":
         session["username"] = request.form["username"]
-        append_message("Bot", "Hello, I'm the Chatbot! How can I help you?")
         return redirect(url_for("index"))
 
     return render_template("login.html")
@@ -109,6 +108,12 @@ def update_knowledge_base():
     save_knowledge_base('knowledge_base.json', knowledge_base)
     # For demonstration purposes, we will simply acknowledge that the bot has learned something new
     return jsonify("Bot: Thank you! I've learned something new.")
+
+
+@app.route('/clear_chat', methods=["POST"])
+def clear_chat():
+    session["chat_history"] = []
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":

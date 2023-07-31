@@ -1,15 +1,17 @@
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    --primary-bg-color: #f7f7f7;
-    --secondary-bg-color: #181818;
+        --primary-bg-color: #181818;
+    --secondary-bg-color: #f7f7f7;
+
+
     --text-color: green;
     background-color: var(--primary-bg-color);
     color: var(--text-color);
 }
 
 body.dark-mode {
-    --primary-bg-color: #181818;
-    --secondary-bg-color: #f7f7f7;
+    --primary-bg-color: #f7f7f7;
+    --secondary-bg-color: #212121;
     --text-color: #fff;
     background-color: var(--primary-bg-color);
     color: var(--text-color);
@@ -92,4 +94,12 @@ body.dark-mode .container {
 /* Additional styles for dark mode transition */
 .fade-transition {
     transition: background-color 0.3s ease-in-out;
+}
+.fa-trash-can{
+    margin-top:20px;
+    margin-right: 5px;
+}
+#clear{
+        cursor: pointer;
+
 }

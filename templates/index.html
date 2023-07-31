@@ -16,11 +16,15 @@
             <div class="chatbox" id="chatbox">
                 <!-- Chat messages will be displayed here -->
                 <!-- Display chat history here -->
+{#                {% if not chat_history %}#}
+{#                                <p><strong>Bot:</strong>Hello, I'm the Chatbot! How can I help you?</p>#}
+{#            {% endif %}#}
                  {% for sender, message in chat_history %}
                     <p><strong>{{ sender }}:</strong> {{ message }}</p>
                 {% endfor %}
             </div>
             <div class="user-input">
+                <i id="clear" class="fa-regular fa-trash-can fa-2xl"></i>
                 <input type="text" id="user_input" class="form-control" placeholder="Type your message...">
                 <button id="send-btn" class="btn btn-primary">Send</button>
             </div>
@@ -38,6 +42,24 @@
         function toggleDarkMode() {
             $("body").toggleClass("dark-mode");
         }
+        function clearChat() {
+            // Clear the displayed chat messages
+            $("#chatbox").empty();
+
+            // Clear the chat history on the server-side (using AJAX if needed)
+            $.ajax({
+                type: "POST",
+                url: "/clear_chat",
+                contentType: "application/json;charset=UTF-8",
+                success: function(response) {
+                    appendMessage('Bot',"Chat history cleared successfully!");
+                },
+                error: function(error) {
+                    console.error("Error clearing chat history:", error);
+                }
+            });
+        }
+
 
     var speed = 20;
 
@@ -127,15 +149,15 @@
             $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
         }
         // Get the username from the Flask template and pass it to the JavaScript variable
-        var user = "{{ session['username'] }}";
-
-        // Function to display the initial greeting
+        var chat = "{{ chat_history }}";
         function showGreeting() {
-            $("#chatbox").append(`<p><strong>Chatbot:</strong> Hello ${user}, how can I help you today?</p>`);
-            scrollToBottom();
+        // Check if the chatbox is empty
+            if ($("#chatbox").children().length === 0) {
+                appendMessage("Bot", "Hello, I'm the Chatbot! How can I help you?");
+                scrollToBottom();
+            }
         }
         $(document).ready(function() {
-            if (!user)
                 showGreeting();
 
             $("#user_input").on("keydown", function(event) {
@@ -150,6 +172,9 @@
 
             $("#dark-mode-toggle").on("click", function() {
                 toggleDarkMode();
+            });
+             $("#clear").on("click", function() {
+                clearChat();
             });
         });
     </script>
