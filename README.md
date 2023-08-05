@@ -5,8 +5,12 @@ This repository contains a simple Flask-based chatbot that interacts with users 
 ## Features
 
 - User authentication and session management.
+- Knowledge base stored in a JSON file.
 - Updating the knowledge base with new questions and answers.
+- Ability to teach the chatbot new answers.
 - Clearing the chat history for a fresh conversation.
+- Web interface for user interaction.
+
 
 ## Setup and Usage
 
