@@ -14,7 +14,7 @@ This repository contains a simple Flask-based chatbot that interacts with users 
 
 ```
 git clone https://github.com/sd950216/Your-Own-Gpt.git
-   cd Your-Own-Gpt
+cd Your-Own-Gpt
 ```
 Install the necessary dependencies
 
