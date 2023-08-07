@@ -22,9 +22,20 @@ cd Your-Own-Gpt
 ```
 ## Install the necessary dependencies
 
-flask
-scikit-learn
-nltk
+1- Installing Flask:
+```
+pip install Flask
+```
+
+2- Installing scikit-learn:
+```
+pip install scikit-learn
+```
+
+3- Installing NLTK (Natural Language Toolkit):
+```
+pip install nltk
+```
 
 ## Configure the secret key in the app.secret_key variable in the app.py file:
 
