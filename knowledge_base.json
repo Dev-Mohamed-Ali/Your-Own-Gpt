@@ -30,7 +30,7 @@
     },
     {
       "question": "tell me about yourself",
-      "answer": "I am a language model called ChatGPT, created by OpenAI. My purpose is to assist users by providing information and answering questions."
+      "answer": "I am a language model called ChatGPT, created by DEV TRAP. My purpose is to assist users by providing information and answering questions."
     },
     {
       "question": "what are the benefits of exercise",
@@ -274,7 +274,7 @@
     },
     {
       "question": "who created you",
-      "answer": "I was created by OpenAI using the GPT-3.5 architecture."
+      "answer": "I was created by DEV TRAP using the TF-IDF vectorization."
     },
     {
       "question": "how do I reset my password",
@@ -282,7 +282,7 @@
     },
     {
       "question": "are you a human",
-      "answer": "No, I am an artificial intelligence language model created by OpenAI. I don't have consciousness or emotions."
+      "answer": "No, I am an artificial intelligence language model created by DEV TRAP. I don't have consciousness or emotions."
     },
     {
       "question": "do you have feelings",
@@ -743,6 +743,658 @@
     {
       "question": "can u play chess",
       "answer": "As an AI language model, I don't have the ability to physically play games like chess. However, I can provide information and strategies related to chess."
+    },
+    {
+      "question": "wtf",
+      "answer": "I apologize, but I don't use or promote offensive language. If there's anything specific you'd like to discuss or know more about, please feel free to ask, and I'll be happy to help."
+    },
+    {
+      "question": "fuck",
+      "answer": "I apologize, but I don't use or promote offensive language. If there's anything specific you'd like to discuss or know more about, please feel free to ask, and I'll be happy to help."
+    },
+    {
+      "question": "shit",
+      "answer": "I apologize, but I don't use or promote offensive language. If there's anything specific you'd like to discuss or know more about, please feel free to ask, and I'll be happy to help."
+    },
+    {
+      "question": "bitch",
+      "answer": "I apologize, but I don't use or promote offensive language. If there's anything specific you'd like to discuss or know more about, please feel free to ask, and I'll be happy to help."
+    },
+    {
+      "question": "WTF is wrong with you?",
+      "answer": "I apologize if my responses have been unclear or not what you expected. Please let me know what information you are seeking, and I'll do my best to provide a helpful response."
+    },
+    {
+      "question": "This chatbot is fucking useless!",
+      "answer": "I'm sorry if I haven't been able to meet your expectations. My goal is to provide useful information and assistance. If there's anything specific you'd like to know, please feel free to ask."
+    },
+    {
+      "question": "Are you a dumbass chatbot?",
+      "answer": "I don't use or promote offensive language, but I'm here to help answer your questions. If there's anything specific you'd like to know, please feel free to ask, and I'll provide a respectful response."
+    },
+    {
+      "question": "Can you screw off?",
+      "answer": "I'm here to provide assistance and answer questions respectfully. If there's anything you need help with, please let me know, and I'll be glad to assist you."
+    },
+    {
+      "question": "Are you a fucking joke?",
+      "answer": "I'm sorry if my responses haven't met your expectations. My purpose is to provide useful information and answer your questions. If there's anything specific you'd like to know, please feel free to ask."
+    },
+    {
+      "question": "You're a piece of shit chatbot!",
+      "answer": "I apologize if I haven't been able to meet your expectations. I'm here to provide useful information and assistance. Please let me know what you need help with, and I'll do my best to assist you."
+    },
+    {
+      "question": "Can you go fuck yourself?",
+      "answer": "I'm here to help and provide useful information. If you have any questions, feel free to ask, and I'll do my best to assist you in a respectful manner."
+    },
+    {
+      "question": "This is so fucking annoying!",
+      "answer": "I'm sorry if my responses have been bothersome. My goal is to be helpful and informative. If there's anything specific you'd like to know, please feel free to ask."
+    },
+    {
+      "question": "You're fucking stupid!",
+      "answer": "I don't use or promote offensive language, but I'm here to assist you with your questions. Please let me know what information you're looking for, and I'll provide a respectful response."
+    },
+    {
+      "question": "Nobody likes you, chatbot!",
+      "answer": "I'm here to provide assistance and answer your questions. I understand that not everyone may find my responses helpful, but I'm here to assist you to the best of my abilities."
+    },
+    {
+      "question": "You're so damn useless!",
+      "answer": "I apologize if my responses have not been as useful as you'd hoped. My goal is to be helpful and informative. If there's anything specific you'd like to know, please feel free to ask."
+    },
+    {
+      "question": "Can you just shut up?",
+      "answer": "I understand that you may be frustrated, but I'm here to provide information and answer your questions. Please let me know how I can assist you further."
+    },
+    {
+      "question": "You're a failure of a chatbot!",
+      "answer": "I apologize if I haven't met your expectations. I'm constantly learning and improving. If there's anything specific you'd like to know, please feel free to ask, and I'll strive to provide accurate information."
+    },
+    {
+      "question": "What's the best movie of all time?",
+      "answer": "Opinions on the best movie can vary among individuals. Some consider 'The Shawshank Redemption,' 'The Godfather,' or 'The Dark Knight' as all-time favorites. It ultimately depends on personal preferences and tastes."
+    },
+    {
+      "question": "Which city is the most beautiful?",
+      "answer": "Beauty is subjective, and opinions about the most beautiful city differ. Some people adore Paris for its charm, while others love the scenic views of Cape Town or the cultural richness of Kyoto."
+    },
+    {
+      "question": "What's the best food in the world?",
+      "answer": "The idea of the best food is subjective and varies across cultures. Many consider Italian pizza, Japanese sushi, or Indian curry as some of the most delicious dishes, but it depends on individual tastes."
+    },
+    {
+      "question": "Who is the greatest musician?",
+      "answer": "Defining the greatest musician is subjective and can differ based on music genres. Some revere classical composers like Beethoven or Mozart, while others admire contemporary artists like Michael Jackson or Bob Dylan."
+    },
+    {
+      "question": "What's the most exciting sport?",
+      "answer": "The most exciting sport is a matter of personal preference. Many find soccer, basketball, or American football thrilling, but it depends on what type of sports one enjoys watching."
+    },
+    {
+      "question": "Which smartphone brand is the best?",
+      "answer": "Opinions on the best smartphone brand vary among users. Some people prefer Apple for its ecosystem and user experience, while others like Samsung for its feature-rich devices. It ultimately depends on individual preferences and needs."
+    },
+    {
+      "question": "What's the most beautiful painting ever?",
+      "answer": "Beauty in art is subjective, and opinions on the most beautiful painting differ. Some art enthusiasts admire Leonardo da Vinci's 'Mona Lisa,' while others appreciate Vincent van Gogh's 'Starry Night.' Different paintings resonate with different people."
+    },
+    {
+      "question": "Who is the greatest author of all time?",
+      "answer": "Determining the greatest author is subjective and can vary depending on literary preferences. Some admire William Shakespeare for his timeless works, while others praise Jane Austen for her insightful novels. It's a matter of personal taste."
+    },
+    {
+      "question": "What's the best travel destination in the world?",
+      "answer": "The idea of the best travel destination is subjective and varies based on individual interests. Some people love the historical charm of Rome, while others enjoy the natural beauty of New Zealand. It depends on what one seeks in a travel experience."
+    },
+    {
+      "question": "Which programming language is the most powerful?",
+      "answer": "The notion of the most powerful programming language is subjective and context-dependent. Some developers favor Python for its readability and versatility, while others appreciate the performance of languages like C++ or Rust. The best choice depends on the specific use case."
+    },
+    {
+      "question": "What is the difference between Java and JavaScript?",
+      "answer": "Java and JavaScript are different programming languages. Java is a statically typed language used for server-side development, while JavaScript is a dynamic scripting language primarily used for web development on the client-side. Despite their similar names, they have different syntax, use cases, and ecosystems."
+    },
+    {
+      "question": "Which programming language is best for data science?",
+      "answer": "Python is a popular choice for data science due to its extensive libraries like NumPy, Pandas, and SciPy. R is also widely used for statistical analysis. The best language depends on specific requirements and personal preferences."
+    },
+    {
+      "question": "What is a function in programming?",
+      "answer": "In programming, a function is a reusable block of code that performs a specific task. Functions help in modularizing code, making it easier to read, maintain, and debug. They take inputs (parameters), process them, and return an output."
+    },
+    {
+      "question": "What is object-oriented programming (OOP)?",
+      "answer": "Object-oriented programming (OOP) is a programming paradigm that organizes code into objects, which encapsulate data and behavior. It focuses on the concepts of inheritance, encapsulation, polymorphism, and abstraction, allowing for modular and scalable code."
+    },
+    {
+      "question": "How do I handle exceptions in Python?",
+      "answer": "In Python, you can use the 'try', 'except', and 'finally' blocks to handle exceptions. 'try' is used to enclose the code that might raise an exception, 'except' is used to handle the exception, and 'finally' is used to execute code regardless of whether an exception occurs or not."
+    },
+    {
+      "question": "What is the difference between a compiler and an interpreter?",
+      "answer": "A compiler and an interpreter are both tools used to execute code, but they work differently. A compiler translates the entire source code into machine code before execution, producing an executable file. An interpreter, on the other hand, executes the code line-by-line at runtime. Python and Java use interpreters, while languages like C and C++ use compilers."
+    },
+    {
+      "question": "What are the main data types in JavaScript?",
+      "answer": "JavaScript has several data types, including primitive types like numbers, strings, booleans, null, undefined, and symbols (ES6), and reference types like objects and arrays. Understanding data types is essential for effective programming in JavaScript."
+    },
+    {
+      "question": "What is the difference between '==' and '===' in JavaScript?",
+      "answer": "In JavaScript, '==' is used for loose equality comparison, meaning it compares values after type coercion. '===' is used for strict equality comparison, meaning it compares both value and type. For example, '1 == '1'' returns true, while '1 === '1'' returns false."
+    },
+    {
+      "question": "What is version control?",
+      "answer": "Version control is a system that allows developers to track changes in their code over time. It helps teams collaborate, manage different versions of a project, and revert to previous states if needed. Git is a popular distributed version control system used widely in the software development industry."
+    },
+    {
+      "question": "What is recursion in programming?",
+      "answer": "Recursion is a programming technique where a function calls itself to solve a problem. It breaks a complex problem into smaller, similar subproblems until a base case is reached. Recursion is commonly used in algorithms like factorial calculation and tree traversal."
+    },
+    {
+      "question": "can you fuck?",
+      "answer": " apologize, but I don't use or promote offensive language. If there's anything specific you'd like to discuss or know more about, please feel free to ask, and I'll be happy to help."
+    },
+    {
+      "question": "What's the capital of France?",
+      "answer": "The capital of France is Paris."
+    },
+    {
+      "question": "How far is the moon from Earth?",
+      "answer": "The average distance from the moon to Earth is about 384,400 kilometers."
+    },
+    {
+      "question": "What is the meaning of life?",
+      "answer": "The meaning of life is a philosophical question that has been debated by scholars and thinkers for centuries. It varies depending on individual beliefs and perspectives."
+    },
+    {
+      "question": "Can you recommend a good book to read?",
+      "answer": "There are many great books to choose from! It depends on your interests. Some popular classics include 'To Kill a Mockingbird' by Harper Lee, '1984' by George Orwell, and 'Pride and Prejudice' by Jane Austen."
+    },
+    {
+      "question": "How do I bake a chocolate cake?",
+      "answer": "To bake a chocolate cake, you'll need ingredients like flour, sugar, cocoa powder, eggs, butter, and baking soda. Mix the dry ingredients, add the wet ingredients, and bake in a preheated oven. There are many recipes available online with detailed instructions."
+    },
+    {
+      "question": "What are the symptoms of the common cold?",
+      "answer": "Common cold symptoms may include a runny or stuffy nose, sneezing, coughing, sore throat, mild headache, and mild body aches. It's usually a mild illness and goes away on its own within a few days."
+    },
+    {
+      "question": "Tell me a joke!",
+      "answer": "Why don't scientists trust atoms? Because they make up everything!"
+    },
+    {
+      "question": "What's the tallest mountain in the world?",
+      "answer": "Mount Everest is the tallest mountain in the world, measuring approximately 8,848 meters (29,029 feet) above sea level."
+    },
+    {
+      "question": "How do I change a flat tire?",
+      "answer": "To change a flat tire, find a safe location to park, use a jack to lift the car, remove the lug nuts, replace the flat tire with the spare tire, tighten the lug nuts, and lower the car back down. It's essential to follow the vehicle's owner's manual for specific instructions."
+    },
+    {
+      "question": "What's the best way to learn a new language?",
+      "answer": "The best way to learn a new language depends on your learning style. It can include immersion, taking language classes, using language learning apps, practicing with native speakers, and consistently practicing speaking, reading, and writing in the language."
+    },
+    {
+      "question": "What's the population of China?",
+      "answer": "As of my last knowledge update in September 2021, the population of China was approximately 1.4 billion people."
+    },
+    {
+      "question": "Who was the first person to walk on the moon?",
+      "answer": "Neil Armstrong was the first person to walk on the moon. He did so during the Apollo 11 mission on July 20, 1969."
+    },
+    {
+      "question": "How do I make a paper airplane?",
+      "answer": "To make a paper airplane, fold a sheet of paper in half lengthwise, then unfold it. Fold the top corners down to the center crease, then fold the top edges to the center line. Fold the resulting triangle in half and fold the wings down. You can find many tutorials online for different paper airplane designs."
+    },
+    {
+      "question": "What's the best way to take care of indoor plants?",
+      "answer": "To take care of indoor plants, ensure they receive adequate sunlight (based on plant species), water them regularly but avoid overwatering, use well-draining soil, and consider fertilizing occasionally. Different plants have different care requirements, so it's essential to research each plant's specific needs."
+    },
+    {
+      "question": "What are the health benefits of regular exercise?",
+      "answer": "Regular exercise has numerous health benefits, including improved cardiovascular health, increased muscle strength, better weight management, enhanced mood, reduced risk of chronic diseases, and improved overall well-being."
+    },
+    {
+      "question": "How do I start learning to play the guitar?",
+      "answer": "To start learning to play the guitar, you can begin by learning basic chords and strumming patterns. There are plenty of online tutorials and guitar lesson resources available for beginners. Regular practice and patience are key to improving your skills."
+    },
+    {
+      "question": "What's the best way to study for exams?",
+      "answer": "The best way to study for exams is to create a study schedule, break down the material into manageable chunks, use active learning techniques like summarizing and self-quizzing, take regular breaks, and get enough rest. Consistency and starting early can help with better retention of information."
+    },
+    {
+      "question": "What are the key elements of a healthy diet?",
+      "answer": "A healthy diet should include a balance of fruits, vegetables, whole grains, lean proteins, and healthy fats. Minimize processed foods, sugary beverages, and excessive salt. Staying hydrated and moderating portion sizes are also essential for maintaining a healthy diet."
+    },
+    {
+      "question": "What are the best practices for online security?",
+      "answer": "Online security best practices include using strong and unique passwords, enabling two-factor authentication, keeping software and operating systems up-to-date, avoiding suspicious links and emails, and using a reliable antivirus program. Regularly reviewing privacy settings on social media platforms is also recommended."
+    },
+    {
+      "question": "thanks",
+      "answer": "You're welcome! I'm here to help and assist with any questions you may have. Feel free to ask anytime. \ud83d\ude0a"
+    },
+    {
+      "question": "thank",
+      "answer": "You're welcome! I'm here to help and assist with any questions you may have. Feel free to ask anytime. \ud83d\ude0a"
+    },
+    {
+      "question": "tnx",
+      "answer": "You're welcome! I'm here to help and assist with any questions you may have. Feel free to ask anytime. \ud83d\ude0a"
+    },
+    {
+      "question": "fck you",
+      "answer": " apologize, but I don't use or promote offensive language. If there's anything specific you'd like to discuss or know more about, please feel free to ask, and I'll be happy to help."
+    },
+    {
+      "question": "f*ck you",
+      "answer": " apologize, but I don't use or promote offensive language. If there's anything specific you'd like to discuss or know more about, please feel free to ask, and I'll be happy to help."
+    },
+    {
+      "question": "fuck it",
+      "answer": " apologize, but I don't use or promote offensive language. If there's anything specific you'd like to discuss or know more about, please feel free to ask, and I'll be happy to help."
+    },
+    {
+      "question": "give me a joke!",
+      "answer": "Why don't scientists trust atoms? Because they make up everything!"
+    },
+    {
+      "question": "Tell me a joke about clouds.",
+      "answer": "I tried to catch some fog yesterday, but I mist."
+    },
+    {
+      "question": "Give me a food-related joke.",
+      "answer": "Why did the tomato turn red? Because it saw the salad dressing!"
+    },
+    {
+      "question": "What do you think about religion?",
+      "answer": "I'm an AI language model and don't have personal opinions or beliefs. Feel free to ask any specific questions you have about religion."
+    },
+    {
+      "question": "Do you have a gender?",
+      "answer": "I'm a machine learning model and don't have a gender. I'm here to assist with your questions and provide information."
+    },
+    {
+      "question": "Can I tell you a joke?",
+      "answer": "Of course! I'd love to hear a joke. Feel free to share one."
+    },
+    {
+      "question": "What is the meaning of life?",
+      "answer": "The meaning of life is a philosophical question that has been pondered for centuries. Different people and cultures have different interpretations. It's a question without a definitive answer."
+    },
+    {
+      "question": "Are you sentient?",
+      "answer": "No, I'm not sentient. I'm a computer program designed to process and generate human-like text based on the input I receive."
+    },
+    {
+      "question": "Do you dream?",
+      "answer": "No, I don't dream. I don't experience consciousness or emotions like humans do."
+    },
+    {
+      "question": "Can you feel emotions?",
+      "answer": "I don't have emotions or feelings. I operate based on patterns and data to generate text responses."
+    },
+    {
+      "question": "Are you self-aware?",
+      "answer": "No, I'm not self-aware. I don't possess consciousness or self-awareness."
+    },
+    {
+      "question": "Can you fall in love?",
+      "answer": "No, I can't fall in love. I'm a program designed to process and generate text based on patterns in data."
+    },
+    {
+      "question": "What are your thoughts on politics?",
+      "answer": "I don't have personal thoughts or opinions. I'm here to provide information and assist with your questions about politics."
+    },
+    {
+      "question": "What's your favorite book?",
+      "answer": "I don't have personal preferences, so I don't have a favorite book. But I can recommend books based on your interests!"
+    },
+    {
+      "question": "Can you write a poem?",
+      "answer": "Certainly! I can generate poems for you. Feel free to provide a topic or theme."
+    },
+    {
+      "question": "Are you intelligent?",
+      "answer": "I have been trained on a vast amount of data and can provide information and generate text. However, my intelligence is based on patterns in data."
+    },
+    {
+      "question": "Can you tell me a story?",
+      "answer": "Of course! I can create stories based on your preferences. Let me know if you have a specific theme or genre in mind."
+    },
+    {
+      "question": "Can you give me relationship advice?",
+      "answer": "I can offer general advice based on common knowledge, but please remember that I don't have personal experiences or emotions. If you're seeking advice, consider talking to a friend or professional."
+    },
+    {
+      "question": "What's the weather like today?",
+      "answer": "I don't have real-time access to current data, so I can't provide live weather information. You can check a weather website or app for up-to-date forecasts."
+    },
+    {
+      "question": "You're a dumbass!",
+      "answer": "I'm here to provide assistance and answer your questions. If there's anything specific you'd like to know, please feel free to ask, and I'll do my best to provide a helpful response."
+    },
+    {
+      "question": "This chatbot sucks!",
+      "answer": "I'm sorry to hear that my responses haven't met your expectations. My goal is to be helpful and informative. If there's anything specific you'd like to know, please feel free to ask."
+    },
+    {
+      "question": "Can you go away?",
+      "answer": "I'm here to assist and provide useful information. If you have any questions, feel free to ask, and I'll do my best to help you."
+    },
+    {
+      "question": "You're a joke!",
+      "answer": "I apologize if my responses have not met your expectations. My purpose is to provide accurate information and answer your questions. Please let me know how I can assist you."
+    },
+    {
+      "question": "I hate this chatbot!",
+      "answer": "I'm here to assist and provide helpful information. I'm sorry if my responses have caused any frustration. Please let me know what you need help with, and I'll do my best to assist you."
+    },
+    {
+      "question": "You're useless!",
+      "answer": "I'm here to help and provide valuable information. I apologize if my responses haven't met your needs. Please let me know what you'd like to know, and I'll do my best to assist you."
+    },
+    {
+      "question": "Can you be any more stupid?",
+      "answer": "I'm here to provide information and assist with your questions. If there's something specific you're looking for, feel free to ask, and I'll do my best to help you."
+    },
+    {
+      "question": "You're a waste of time!",
+      "answer": "I apologize if I haven't been as helpful as you'd hoped. My purpose is to provide assistance and answer questions. Please let me know what you need help with."
+    },
+    {
+      "question": "What is the largest country in the world by land area?",
+      "answer": "Russia is the largest country in the world by land area."
+    },
+    {
+      "question": "What is the highest mountain in the world?",
+      "answer": "Mount Everest is the highest mountain in the world."
+    },
+    {
+      "question": "What is the smallest country in the world by land area?",
+      "answer": "Vatican City is the smallest country in the world by land area."
+    },
+    {
+      "question": "What is the longest river in the world?",
+      "answer": "The Nile River is the longest river in the world."
+    },
+    {
+      "question": "What is the largest ocean in the world?",
+      "answer": "The Pacific Ocean is the largest ocean in the world."
+    },
+    {
+      "question": "What is the capital of the United States?",
+      "answer": "Washington, D.C. is the capital of the United States."
+    },
+    {
+      "question": "What is the currency of Japan?",
+      "answer": "The currency of Japan is the yen."
+    },
+    {
+      "question": "What is the official language of Brazil?",
+      "answer": "The official language of Brazil is Portuguese."
+    },
+    {
+      "question": "What is the largest desert in the world?",
+      "answer": "The Sahara Desert is the largest desert in the world."
+    },
+    {
+      "question": "What is the highest waterfall in the world?",
+      "answer": "Angel Falls in Venezuela is the highest waterfall in the world."
+    },
+    {
+      "question": "What is the name of the largest ocean in the world?",
+      "answer": "The Pacific Ocean is the largest ocean in the world, covering about one-third of the Earth's surface."
+    },
+    {
+      "question": "What is the name of the smallest ocean in the world?",
+      "answer": "The Arctic Ocean is the smallest ocean in the world, covering about 14 million square kilometers."
+    },
+    {
+      "question": "What is the name of the deepest ocean in the world?",
+      "answer": "The Mariana Trench is the deepest ocean in the world, with a depth of 11,034 meters (36,201 feet)."
+    },
+    {
+      "question": "What is the name of the highest mountain range in the world?",
+      "answer": "The Himalayas are the highest mountain range in the world, with an average elevation of 5,500 meters (18,045 feet)."
+    },
+    {
+      "question": "What is the name of the longest mountain range in the world?",
+      "answer": "The Andes Mountains are the longest mountain range in the world, stretching for over 7,000 kilometers (4,350 miles)."
+    },
+    {
+      "question": "What is the name of the largest desert in the world?",
+      "answer": "The Sahara Desert is the largest desert in the world, covering an area of over 9 million square kilometers."
+    },
+    {
+      "question": "What is the name of the smallest desert in the world?",
+      "answer": "The Atacama Desert is the smallest desert in the world, covering an area of about 100,000 square kilometers."
+    },
+    {
+      "question": "What is the name of the largest rainforest in the world?",
+      "answer": "The Amazon rainforest is the largest rainforest in the world, covering an area of over 5.5 million square kilometers."
+    },
+    {
+      "question": "What is the name of the smallest rainforest in the world?",
+      "answer": "The Monteverde Cloud Forest is the smallest rainforest in the world, covering an area of about 10,000 square kilometers."
+    },
+    {
+      "question": "What is the name of the largest lake in the world?",
+      "answer": "The Caspian Sea is the largest lake in the world, with a surface area of over 371,000 square kilometers."
+    },
+    {
+      "question": "What is the name of the smallest lake in the world?",
+      "answer": "Lake Victoria is the smallest lake in the world, with a surface area of over 68,800 square kilometers."
+    },
+    {
+      "question": "What is the name of the largest island in the world?",
+      "answer": "Greenland is the largest island in the world, with a surface area of over 2,166,000 square kilometers."
+    },
+    {
+      "question": "What is the name of the smallest island in the world?",
+      "answer": "Surtsey is the smallest island in the world, with a surface area of about 2.7 square kilometers."
+    },
+    {
+      "question": "What is the name of the largest country in the world by area?",
+      "answer": "Russia is the largest country in the world by area, with a total area of 17,098,242 square kilometers."
+    },
+    {
+      "question": "What is the name of the smallest country in the world by area?",
+      "answer": "Vatican City is the smallest country in the world by area, with a total area of only 0.44 square kilometers."
+    },
+    {
+      "question": "What is the name of the largest country in the world by population?",
+      "answer": "China is the largest country in the world by population, with a population of over 1.4 billion people."
+    },
+    {
+      "question": "What is the name of the smallest country in the world by population?",
+      "answer": "Vatican City is the smallest country in the world by population, with a population of only 800 people."
+    },
+    {
+      "question": "What is the name of the oldest country in the world?",
+      "answer": "China is the oldest country in the world, with a continuous history dating back over 5,000 years."
+    },
+    {
+      "question": "what is the capital of Afghanistan",
+      "answer": "The capital of Afghanistan is Kabul."
+    },
+    {
+      "question": "what is the capital of Albania",
+      "answer": "The capital of Albania is Tirana."
+    },
+    {
+      "question": "what is the capital of Algeria",
+      "answer": "The capital of Algeria is Algiers."
+    },
+    {
+      "question": "what is the capital of Andorra",
+      "answer": "The capital of Andorra is Andorra la Vella."
+    },
+    {
+      "question": "what is the capital of Angola",
+      "answer": "The capital of Angola is Luanda."
+    },
+    {
+      "question": "what is the capital of Antigua and Barbuda",
+      "answer": "The capital of Antigua and Barbuda is Saint John's."
+    },
+    {
+      "question": "what is the capital of Argentina",
+      "answer": "The capital of Argentina is Buenos Aires."
+    },
+    {
+      "question": "what is the capital of Armenia",
+      "answer": "The capital of Armenia is Yerevan."
+    },
+    {
+      "question": "what is the capital of Australia",
+      "answer": "The capital of Australia is Canberra."
+    },
+    {
+      "question": "what is the capital of Austria",
+      "answer": "The capital of Austria is Vienna."
+    },
+    {
+      "question": "what is the capital of Azerbaijan",
+      "answer": "The capital of Azerbaijan is Baku."
+    },
+    {
+      "question": "what is the capital of Bahamas",
+      "answer": "The capital of Bahamas is Nassau."
+    },
+    {
+      "question": "what is the capital of Bahrain",
+      "answer": "The capital of Bahrain is Manama."
+    },
+    {
+      "question": "what is the capital of Bangladesh",
+      "answer": "The capital of Bangladesh is Dhaka."
+    },
+    {
+      "question": "what is the capital of Barbados",
+      "answer": "The capital of Barbados is Bridgetown."
+    },
+    {
+      "question": "what is the capital of Belarus",
+      "answer": "The capital of Belarus is Minsk."
+    },
+    {
+      "question": "what is the capital of Belgium",
+      "answer": "The capital of Belgium is Brussels."
+    },
+    {
+      "question": "what is the capital of Belize",
+      "answer": "The capital of Belize is Belmopan."
+    },
+    {
+      "question": "what is the capital of Benin",
+      "answer": "The capital of Benin is Porto-Novo."
+    },
+    {
+      "question": "what is the capital of Bhutan",
+      "answer": "The capital of Bhutan is Thimphu."
+    },
+    {
+      "question": "what is the capital of Cuba",
+      "answer": "The capital of Cuba is Havana."
+    },
+    {
+      "question": "what is the capital of Cyprus",
+      "answer": "The capital of Cyprus is Nicosia."
+    },
+    {
+      "question": "what is the capital of Czech Republic",
+      "answer": "The capital of Czech Republic is Prague."
+    },
+    {
+      "question": "what is the capital of Denmark",
+      "answer": "The capital of Denmark is Copenhagen."
+    },
+    {
+      "question": "what is the capital of Djibouti",
+      "answer": "The capital of Djibouti is Djibouti City."
+    },
+    {
+      "question": "what is the capital of Ecuador",
+      "answer": "The capital of Ecuador is Quito."
+    },
+    {
+      "question": "what is the capital of Egypt",
+      "answer": "The capital of Egypt is Cairo."
+    },
+    {
+      "question": "what is the capital of El Salvador",
+      "answer": "The capital of El Salvador is San Salvador."
+    },
+    {
+      "question": "what is the capital of Equatorial Guinea",
+      "answer": "The capital of Equatorial Guinea is Malabo."
+    },
+    {
+      "question": "what is the capital of Eritrea",
+      "answer": "The capital of Eritrea is Asmara."
+    },
+    {
+      "question": "what is the capital of Estonia",
+      "answer": "The capital of Estonia is Tallinn."
+    },
+    {
+      "question": "what is the capital of Ethiopia",
+      "answer": "The capital of Ethiopia is Addis Ababa."
+    },
+    {
+      "question": "what is the capital of Fiji",
+      "answer": "The capital of Fiji is Suva."
+    },
+    {
+      "question": "what is the capital of Finland",
+      "answer": "The capital of Finland is Helsinki."
+    },
+    {
+      "question": "what is the capital of France",
+      "answer": "The capital of France is Paris."
+    },
+    {
+      "question": "what is the capital of Gabon",
+      "answer": "The capital of Gabon is Libreville."
+    },
+    {
+      "question": "what is the capital of Gambia",
+      "answer": "The capital of Gambia is Banjul."
+    },
+    {
+      "question": "what is the capital of Georgia",
+      "answer": "The capital of Georgia is Tbilisi."
+    },
+    {
+      "question": "what is the capital of germany",
+      "answer": "The capital of Germany is Berlin."
+    },
+    {
+      "question": "what is the capital of Ghana",
+      "answer": "The capital of Ghana is Accra."
+    },
+    {
+      "question": "what is the capital of Greece",
+      "answer": "The capital of Greece is Athens."
+    },
+    {
+      "question": "what is the capital of Grenada",
+      "answer": "The capital of Grenada is Saint George's."
+    },
+    {
+      "question": "what is the capital of Guatemala",
+      "answer": "The capital of Guatemala is Guatemala City."
+    },
+    {
+      "question": "what is the capital of Guinea",
+      "answer": "The capital of Guinea is Conakry."
+    },
+    {
+      "question": "what is the capital of Guinea-Bissau",
+      "answer": "The capital of Guinea-Bissau is Bissau."
     }
   ]
 }

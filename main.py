@@ -24,6 +24,10 @@ def save_knowledge_base(file_path: str, data: dict):
 
 # Create an index and store the embeddings of knowledge base questions
 def find_best_match(user_question: str, questions: list[str]) -> str | None:
+    # Preprocessing and Tokenization
+    # You might want to use more advanced text preprocessing techniques here
+    user_question = user_question.lower()
+
     vectorizer = TfidfVectorizer()
     knowledge_base_vectors = vectorizer.fit_transform(questions)
     user_question_vector = vectorizer.transform([user_question])
@@ -31,8 +35,13 @@ def find_best_match(user_question: str, questions: list[str]) -> str | None:
     similarity_scores = cosine_similarity(user_question_vector, knowledge_base_vectors)
     best_match_idx = similarity_scores.argmax()
 
-    return questions[best_match_idx] if similarity_scores[0, best_match_idx] > 0 else None
+    # Choose a similarity threshold slightly above 0. Adjust as needed.
+    similarity_threshold = 0.7
 
+    if similarity_scores[0, best_match_idx] > similarity_threshold:
+        return questions[best_match_idx]
+    else:
+        return None
 
 def get_answer_for_question(question: str, knowledge_base: dict) -> str | None:
     for q in knowledge_base["questions"]:
@@ -68,7 +77,6 @@ def logout():
 
 def append_message(who, message):
     if "chat_history" not in session:
-        print("not found")
         session["chat_history"] = []
 
     session["chat_history"].append((who, message))
@@ -89,7 +97,6 @@ def get_chatbot_response():
     user_input = request.json["user_input"]
     append_message(session["username"], user_input)
     response = chatbot(user_input)
-    print("response is %s" % response)
     if response == "Bot: I don't know the answer. Can you teach me?":
         append_message("Chatbot", "Bot: Alright, I understand. Feel free to ask anything else!")
     else:
