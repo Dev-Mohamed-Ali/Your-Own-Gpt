@@ -56,8 +56,15 @@ Create a JSON file named knowledge_base.json with the following structure:
     ]
 }
 ```
+## Improve Accuracy:
 
-Run the Chatbot:
+To enhance the accuracy of the answer matching process, you can adjust the similarity threshold in the code. The similarity threshold determines how closely a user's question should match a question in the knowledge base for it to be considered a match.
+
+```
+# Choose a similarity threshold above 0. Adjust as needed.
+similarity_threshold = 0.7
+```
+## Run the Chatbot:
 
 ```
 python app.py
