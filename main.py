@@ -1,9 +1,8 @@
+from flask import Flask, render_template, request, session, jsonify
 import json
 import time
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Set a secure secret key for production use
@@ -43,6 +42,7 @@ def find_best_match(user_question: str, questions: list[str]) -> str | None:
     else:
         return None
 
+
 def get_answer_for_question(question: str, knowledge_base: dict) -> str | None:
     for q in knowledge_base["questions"]:
         if q["question"] == question:
@@ -50,37 +50,15 @@ def get_answer_for_question(question: str, knowledge_base: dict) -> str | None:
     return "Bot: I don't know the answer. Can you teach me?"
 
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    if "username" not in session:
-        return redirect(url_for("login"))
-    chat_history = session.get("chat_history", [])
-    return render_template("index.html", chat_history=chat_history)
-
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    # if session["username"]:
-    #     return redirect(url_for("index"))
-    if request.method == "POST":
-        session["username"] = request.form["username"]
-        return redirect(url_for("index"))
-
-    return render_template("login.html")
-
-
-@app.route("/logout")
-def logout():
-    session.clear()
-    return redirect(url_for("login"))
-
-
 def append_message(who, message):
-    if "chat_history" not in session:
-        session["chat_history"] = []
+    # Initialize an empty list if chat_history is not already in session
+    chat_history = session.get("chat_history", [])
 
-    session["chat_history"].append((who, message))
-    session["chat_history"] = session["chat_history"]
+    # Append the new message to the chat history
+    chat_history.append({"who": who, "message": message})
+
+    # Update the chat_history in the session
+    session["chat_history"] = chat_history
 
 
 def chatbot(user_input):
@@ -91,36 +69,47 @@ def chatbot(user_input):
     return answer
 
 
-@app.route("/get_response", methods=["POST"])
+@app.route("/get_response")
 def get_chatbot_response():
     time.sleep(1)
-    user_input = request.json["user_input"]
+    user_input = request.args.get("user_input")
     append_message(session["username"], user_input)
     response = chatbot(user_input)
     if response == "Bot: I don't know the answer. Can you teach me?":
         append_message("Chatbot", "Bot: Alright, I understand. Feel free to ask anything else!")
     else:
         append_message("Chatbot", response)
-    return jsonify(response)
+    return json.dumps([f"Bot:{response}"])
 
 
-@app.route("/update_knowledge_base", methods=["POST"])
-def update_knowledge_base():
-    user_input = request.json["user_input"]
-    new_answer = request.json["new_answer"]
-
-    # Update the knowledge base with the new answer (not implemented here)
-    knowledge_base: dict = load_knowledge_base('knowledge_base.json')
-    knowledge_base["questions"].append({"question": user_input, "answer": new_answer})
-    save_knowledge_base('knowledge_base.json', knowledge_base)
-    # For demonstration purposes, we will simply acknowledge that the bot has learned something new
-    return jsonify("Bot: Thank you! I've learned something new.")
+@app.route("/set_username")
+def set_username():
+    time.sleep(1)
+    user_input = request.args.get("username")
+    if user_input:
+        session["username"] = user_input
+    else:
+        session["username"] = "user"
+    return json.dumps(["success"])
 
 
-@app.route('/clear_chat', methods=["POST"])
-def clear_chat():
-    session["chat_history"] = []
-    return redirect(url_for('index'))
+@app.route("/get_chat_history")
+def get_chat_history():
+    chat_history = session.get("chat_history", [])
+    print("chat_history:", chat_history)
+    return jsonify(chat_history)
+
+
+@app.route("/clear_chat_history", methods=["POST"])
+def clear_chat_history():
+    session.pop("chat_history", None)
+    return jsonify({"status": "success"})
+
+
+@app.route("/")
+def home():
+    chat_history = session.get("chat_history", [])
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

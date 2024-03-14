@@ -1,182 +1,55 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>ChatGPT - Your AI Chatbot</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>MoTrap chatbot</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/styles/style.css">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  </head>
+<!------ Include the above in your HEAD tag ---------->
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>ChatGPT - Your AI Chatbot</h1>
-            <i id="dark-mode-toggle" class="fas fa-sun"></i>
+    <script src="/static/scripts/main.js"></script>
+    <div class="chat_window">
+        <div class="top_menu">
+            <div class="buttons">
+    <!-- Add the Clear Chat button with hover text -->
+        <div class="button close" id="ClearChat" onclick="clearChatHistory()">
+            <span class="hover_text">Clear History</span>
         </div>
-        <div class="chat-container">
-            <div class="chatbox" id="chatbox">
-                <!-- Chat messages will be displayed here -->
-                <!-- Display chat history here -->
-{#                {% if not chat_history %}#}
-{#                                <p><strong>Bot:</strong>Hello, I'm the Chatbot! How can I help you?</p>#}
-{#            {% endif %}#}
-                 {% for sender, message in chat_history %}
-                    <p><strong>{{ sender }}:</strong> {{ message }}</p>
-                {% endfor %}
+                <div class="button minimize"></div>
+                <div class="button maximize"></div>
+
             </div>
-            <div class="user-input">
-                <i id="clear" class="fa-regular fa-trash-can fa-2xl"></i>
-                <input type="text" id="user_input" class="form-control" placeholder="Type your message...">
-                <button id="send-btn" class="btn btn-primary">Send</button>
+            <div class="title">MoTrap ChatBot</div>
+        </div>
+        <ul class="messages"></ul>
+        <div class="bottom_wrapper clearfix">
+            <div class="message_input_wrapper">
+                <input class="message_input" placeholder="Insert your message here..." />
+            </div>
+            <div class="send_message">
+                <div class="icon"></div>
+                <div class="text">Send</div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script>
-       scrollToBottom();
-        function showThinkingMessage() {
-            $("#chatbox").append(`<p><strong>Bot:</strong> Thinking....</p>`);
-            scrollToBottom();
-        }
-
-        function toggleDarkMode() {
-            $("body").toggleClass("dark-mode");
-        }
-        function clearChat() {
-            // Clear the displayed chat messages
-            $("#chatbox").empty();
-
-            // Clear the chat history on the server-side (using AJAX if needed)
-            $.ajax({
-                type: "POST",
-                url: "/clear_chat",
-                contentType: "application/json;charset=UTF-8",
-                success: function(response) {
-                    appendMessage('Bot',"Chat history cleared successfully!");
-                },
-                error: function(error) {
-                    console.error("Error clearing chat history:", error);
-                }
-            });
-        }
-
-
-    var speed = 20;
-
-    function typeWriter(messageElement, message) {
-        var i = 0;
-        function type() {
-            if (i < message.length) {
-                messageElement.innerHTML += message.charAt(i);
-                i++;
-                        scrollToBottom();
-                setTimeout(type, speed);
-            }
-        }
-        type();
-    }
-
-    function showTypingMessage(sender, message) {
-        const messageElement = document.createElement("p");
-        messageElement.innerHTML = `<strong>${sender}:</strong> <span class="typing"></span>`;
-        $("#chatbox").append(messageElement);
-        typeWriter(messageElement.lastChild, message); // Start the typing animation for the last span element
-        scrollToBottom();
-    }
-
-    function appendMessage(who, message) {
-        showTypingMessage(who, message);
-    }
-
-
-        function getUserInput() {
-            return $("#user_input").val();
-        }
-        function handleChatbotResponse(response,temp_user_input) {
-            $("#chatbox p:last-child").remove(); // Remove the "Thinking..." message
-
-            if (response.startsWith("Bot: I don't know the answer.")) {
-                // If the bot doesn't know the answer, prompt the user to teach the bot
-                var new_answer = prompt("Bot: I don't know the answer. Type the answer or 'skip' to skip:");
-
-                if (new_answer && new_answer.trim().toLowerCase() !== 'skip') {
-                    // User provided an answer, send it to the server to update the knowledge base
-                    $.ajax({
-                        type: "POST",
-                        url: "/update_knowledge_base",
-                        data: JSON.stringify({
-                            user_input: temp_user_input,
-                            new_answer: new_answer
-                        }),
-                        contentType: "application/json;charset=UTF-8",
-                        success: function (response) {
-                            appendMessage("Bot", "Thank you! I've learned something new.");
-                            $("#user_input").focus(); // Put focus back on the input field
-                        }
-                    });
-                } else {
-                    appendMessage("Bot", "Bot: Alright, I understand. Feel free to ask anything else!");
-                    // User skipped teaching, simply clear the input field and continue
-                    $("#user_input").focus();
-                }
-            } else {
-                // Regular response from the bot, display it
-                appendMessage("Chatbot", response);
-                $("#user_input").focus(); // Put focus back on the input field
-            }
-        }
-
-        function sendMessageToServer() {
-            var user_input = getUserInput();
-            $("#user_input").val(""); // Clear the user input field
-            var currentUser = "{{ session['username'] }}";
-            appendMessage(currentUser, user_input);
-            showThinkingMessage();
-
-
-            $.ajax({
-                type: "POST",
-                url: "/get_response",
-                data: JSON.stringify({ user_input: user_input }),
-                contentType: "application/json;charset=UTF-8",
-                success: function (response) {
-                    handleChatbotResponse(response,user_input);
-                }
-            });
-        }
-
-        function scrollToBottom() {
-            $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
-        }
-        // Get the username from the Flask template and pass it to the JavaScript variable
-        var chat = "{{ chat_history }}";
-        function showGreeting() {
-        // Check if the chatbox is empty
-            if ($("#chatbox").children().length === 0) {
-                appendMessage("Bot", "Hello, I'm the Chatbot! How can I help you?");
-                scrollToBottom();
-            }
-        }
-        $(document).ready(function() {
-                showGreeting();
-
-            $("#user_input").on("keydown", function(event) {
-                if (event.key === "Enter") {
-                    sendMessageToServer();
-                }
-            });
-
-            $("#send-btn").on("click", function() {
-                sendMessageToServer();
-            });
-
-            $("#dark-mode-toggle").on("click", function() {
-                toggleDarkMode();
-            });
-             $("#clear").on("click", function() {
-                clearChat();
-            });
-        });
+    <div class="message_template">
+        <li class="message">
+            <div class="avatar"></div>
+            <div class="text_wrapper">
+                <div class="text"></div>
+            </div>
+        </li>
+    </div>
+    <!-- Set the currentUser variable -->
+    <script>
+        var currentUser = "{{ session['username'] }}";
     </script>
 </body>
-</html>
