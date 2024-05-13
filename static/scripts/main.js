@@ -59,7 +59,35 @@ $(function () {
 
     // Display initial greeting message
 });
-const greetingMessage = new Message('Hi, I am a simple bot. How can I help you?', 'left');
+function getAndDisplayGreeting() {
+    // Make an AJAX request to fetch the current username
+    $.ajax({
+        type: 'GET',
+        url: '/get_username',
+        success: function(response) {
+            const responseData = JSON.parse(response);
+            const current_username = responseData['current_username'];
+
+            console.log("username is ",current_username)
+            if (current_username !== '') {
+                // If a username exists, create a personalized greeting
+                const personalizedGreeting = `Hi ${current_username}, I am a simple bot. How can I help you?`;
+                const greetingMessage = new Message(personalizedGreeting, 'left');
+                greetingMessage.draw();
+            } else {
+                // If no username exists, use a generic greeting
+                const genericGreeting = 'Hi there, I am a simple bot. How can I help you?';
+                const greetingMessage = new Message(genericGreeting, 'left');
+                greetingMessage.draw();
+            }
+        },
+        error: function() {
+            // Handle errors if any
+            console.error('Error fetching username.');
+        }
+    });
+}
+
 
 // Function to display SweetAlert prompt
 function showNamePrompt() {
@@ -83,7 +111,8 @@ function showNamePrompt() {
                     },
                     success: function () {
                         // Process the user's name (you can send it to the server or do something else)
-                        greetingMessage.draw();
+// Call the function to fetch and display the greeting
+getAndDisplayGreeting();
                     }
                 });
 
@@ -114,7 +143,8 @@ function showNamePrompt() {
                     },
                     success: function () {
                         // Process the user's name (you can send it to the server or do something else)
-                        greetingMessage.draw();
+// Call the function to fetch and display the greeting
+getAndDisplayGreeting();
                     }
                 });
 
@@ -137,7 +167,8 @@ function fetchChatHistory() {
             else {
 
                         // Process the user's name (you can send it to the server or do something else)
-                        greetingMessage.draw();
+// Call the function to fetch and display the greeting
+getAndDisplayGreeting();
             }
         },
         error: function (xhr, status, error) {
@@ -180,6 +211,23 @@ window.addEventListener('load', function () {
 });
 
 
+function show_confirmation() {
+    Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+clearChatHistory()
+  }
+});
+
+}
+
 // Add event listener to the Clear Chat button
 function clearChatHistory() {
     // Clear the chat history in the UI
@@ -200,7 +248,8 @@ function clearChatHistory() {
             }).then(() => {
 
                         // Process the user's name (you can send it to the server or do something else)
-                        greetingMessage.draw();
+// Call the function to fetch and display the greeting
+getAndDisplayGreeting();
 
 
 
