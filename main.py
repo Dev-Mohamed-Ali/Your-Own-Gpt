@@ -73,11 +73,11 @@ def chatbot(user_input):
 def get_chatbot_response():
     time.sleep(1)
     user_input = request.args.get("user_input")
-    append_message(session["username"], user_input)
     response = chatbot(user_input)
     if response == "Bot: I don't know the answer. Can you teach me?":
-        append_message("Chatbot", "Bot: Alright, I understand. Feel free to ask anything else!")
+        response = "no answer"
     else:
+        append_message(session["username"], user_input)
         append_message("Chatbot", response)
     return json.dumps([f"Bot:{response}"])
 
@@ -114,6 +114,33 @@ def get_chat_history():
 def clear_chat_history():
     session.pop("chat_history", None)
     return jsonify({"status": "success"})
+
+
+@app.route("/teach_bot", methods=["POST"])
+def update_knowledge_base():
+    try:
+        # Extract data from the request JSON
+        user_input = request.json["user_input"]
+        new_answer = request.json["answer"]
+
+        # Load the knowledge base
+        knowledge_base = load_knowledge_base('knowledge_base.json')
+
+        # Update the knowledge base with the new answer
+        knowledge_base["questions"].append({"question": user_input, "answer": new_answer})
+
+        # Save the updated knowledge base
+        save_knowledge_base('knowledge_base.json', knowledge_base)
+
+        # append messages
+        append_message(session["username"], user_input)
+        append_message("Chatbot", new_answer)
+
+        # Return a success message
+        return jsonify({"message": "Bot: Thank you! I've learned something new."}), 200
+    except Exception as e:
+        # Return an error message if there's an exception
+        return jsonify({"error": str(e)}), 400
 
 
 @app.route("/")

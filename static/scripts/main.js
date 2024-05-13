@@ -35,15 +35,80 @@ function sendMessage(text) {
         },
         success: function (response) {
             const messagesList = JSON.parse(response);
-            messagesList.forEach(msg => {
-                const message = new Message(msg, 'left');
-                message.draw();
-            });
-            $messages.stop().animate({scrollTop: $messages.prop('scrollHeight')}, 700);
+            let Bot_response = messagesList[0];
+
+            if (Bot_response === "Bot:no answer") {
+                Swal.fire({
+                    title: 'Teach the Bot',
+                    text: 'Please provide the answer:',
+                    input: 'text',
+                    showCancelButton: true,
+                    confirmButtonText: 'Submit',
+                    cancelButtonText: 'Cancel',
+                    showLoaderOnConfirm: true,
+                    preConfirm: (answer) => {
+                        return new Promise((resolve) => {
+                            $.ajax({
+                                type: 'POST',
+                                url: '/teach_bot',
+                                contentType: 'application/json',  // Set the content type to JSON
+                                data: JSON.stringify({  // Convert the data to JSON format
+                                    user_input: text,
+                                    answer: answer
+                                }), success: function (response) {
+                                    resolve(response);
+                                },
+                                error: function (xhr, status, error) {
+                                    resolve('Error: ' + error);
+                                }
+                            });
+                        });
+                    },
+                    allowOutsideClick: () => !Swal.isLoading()
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Thank you!',
+                            text: "Thank you! I've learned something new.",
+                            icon: 'success',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            timer: 1000, timerProgressBar: true
+                        }).then(() => {
+                            const user_answer = new Message("Thank you! I've learned something new.", 'left');
+                            user_answer.draw();
+                            $messages.stop().animate({scrollTop: $messages.prop('scrollHeight')}, 700);
+
+                        });
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire({
+                            title: 'No problem!',
+                            text: "You can continue using the bot.",
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            timer: 1000, timerProgressBar: true
+                        }).then(() => {
+                            $messages.stop().animate({scrollTop: $messages.prop('scrollHeight')}, 700);
+
+                            getAndDisplayGreeting();
+                        });
+                    }
+                });
+            } else {
+                messagesList.forEach(msg => {
+                    const message = new Message(msg, 'left');
+                    message.draw();
+                });
+                $messages.stop().animate({scrollTop: $messages.prop('scrollHeight')}, 700);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error fetching response:', error);
         }
     });
-
 }
+
 
 // Function to get message text from input field
 function getMessageText() {
@@ -59,16 +124,17 @@ $(function () {
 
     // Display initial greeting message
 });
+
 function getAndDisplayGreeting() {
     // Make an AJAX request to fetch the current username
     $.ajax({
         type: 'GET',
         url: '/get_username',
-        success: function(response) {
+        success: function (response) {
             const responseData = JSON.parse(response);
             const current_username = responseData['current_username'];
 
-            console.log("username is ",current_username)
+            console.log("username is ", current_username)
             if (current_username !== '') {
                 // If a username exists, create a personalized greeting
                 const personalizedGreeting = `Hi ${current_username}, I am a simple bot. How can I help you?`;
@@ -81,7 +147,7 @@ function getAndDisplayGreeting() {
                 greetingMessage.draw();
             }
         },
-        error: function() {
+        error: function () {
             // Handle errors if any
             console.error('Error fetching username.');
         }
@@ -112,7 +178,7 @@ function showNamePrompt() {
                     success: function () {
                         // Process the user's name (you can send it to the server or do something else)
 // Call the function to fetch and display the greeting
-getAndDisplayGreeting();
+                        getAndDisplayGreeting();
                     }
                 });
 
@@ -144,7 +210,7 @@ getAndDisplayGreeting();
                     success: function () {
                         // Process the user's name (you can send it to the server or do something else)
 // Call the function to fetch and display the greeting
-getAndDisplayGreeting();
+                        getAndDisplayGreeting();
                     }
                 });
 
@@ -161,14 +227,13 @@ function fetchChatHistory() {
         url: '/get_chat_history',
         success: function (response) {
             if (response.length > 0) {
-            // Display the chat history
-            displayChatHistory(response);
-            }
-            else {
+                // Display the chat history
+                displayChatHistory(response);
+            } else {
 
-                        // Process the user's name (you can send it to the server or do something else)
+                // Process the user's name (you can send it to the server or do something else)
 // Call the function to fetch and display the greeting
-getAndDisplayGreeting();
+                getAndDisplayGreeting();
             }
         },
         error: function (xhr, status, error) {
@@ -213,18 +278,18 @@ window.addEventListener('load', function () {
 
 function show_confirmation() {
     Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed) {
-clearChatHistory()
-  }
-});
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            clearChatHistory()
+        }
+    });
 
 }
 
@@ -247,10 +312,9 @@ function clearChatHistory() {
                 , timer: 1500, timerProgressBar: true,
             }).then(() => {
 
-                        // Process the user's name (you can send it to the server or do something else)
+                // Process the user's name (you can send it to the server or do something else)
 // Call the function to fetch and display the greeting
-getAndDisplayGreeting();
-
+                getAndDisplayGreeting();
 
 
             })

@@ -1395,6 +1395,10 @@
     {
       "question": "what is the capital of Guinea-Bissau",
       "answer": "The capital of Guinea-Bissau is Bissau."
+    },
+    {
+      "question": "welcome",
+      "answer": "welcome there!"
     }
   ]
 }
