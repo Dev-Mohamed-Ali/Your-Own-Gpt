@@ -25,6 +25,8 @@ function sendMessage(text) {
     const $messages = $('.messages');
     const message = new Message(text, 'right');
     message.draw();
+    const thinking = new Message("Bot is thinking...", 'left');
+    thinking.draw();
     $messages.stop().animate({scrollTop: $messages.prop('scrollHeight')}, 700);
 
     $.ajax({
@@ -34,6 +36,15 @@ function sendMessage(text) {
             user_input: text,
         },
         success: function (response) {
+            // Select the <ul> element with the class "messages"
+            let ulElement = document.querySelector("ul.messages");
+
+            // Get the last <li> element within the selected <ul>
+            let lastLiElement = ulElement.lastElementChild;
+
+            // Remove the last <li> element
+            lastLiElement.remove();
+
             const messagesList = JSON.parse(response);
             let Bot_response = messagesList[0];
 
@@ -91,7 +102,7 @@ function sendMessage(text) {
                         }).then(() => {
                             $messages.stop().animate({scrollTop: $messages.prop('scrollHeight')}, 700);
 
-                            getAndDisplayGreeting();
+                            apologize();
                         });
                     }
                 });
@@ -154,7 +165,10 @@ function getAndDisplayGreeting() {
     });
 }
 
-
+function apologize(){
+    const apologizeMessage = new Message("Sorry, I don't know the answer. Could you please rephrase or ask another question?", 'left');
+    apologizeMessage.draw();
+}
 // Function to display SweetAlert prompt
 function showNamePrompt() {
     Swal.fire({

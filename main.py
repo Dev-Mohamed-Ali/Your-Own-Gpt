@@ -35,7 +35,7 @@ def find_best_match(user_question: str, questions: list[str]) -> str | None:
     best_match_idx = similarity_scores.argmax()
 
     # Choose a similarity threshold slightly above 0. Adjust as needed.
-    similarity_threshold = 0.7
+    similarity_threshold = 0.65
 
     if similarity_scores[0, best_match_idx] > similarity_threshold:
         return questions[best_match_idx]
@@ -62,7 +62,7 @@ def append_message(who, message):
 
 
 def chatbot(user_input):
-    knowledge_base = load_knowledge_base('knowledge_base.json')
+    knowledge_base = load_knowledge_base('new_data.json')
     # Finds the best match using TF-IDF and cosine similarity, otherwise returns None
     best_match = find_best_match(user_input, [q["question"] for q in knowledge_base["questions"]])
     answer = get_answer_for_question(best_match, knowledge_base)
