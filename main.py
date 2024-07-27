@@ -96,7 +96,6 @@ def set_username():
 @app.route("/get_username")
 def get_username():
     user_name = session.get("username")
-    print("username is :", user_name)
     if user_name:
         return json.dumps({"current_username": user_name})
     else:
@@ -106,7 +105,6 @@ def get_username():
 @app.route("/get_chat_history")
 def get_chat_history():
     chat_history = session.get("chat_history", [])
-    print("chat_history:", chat_history)
     return jsonify(chat_history)
 
 

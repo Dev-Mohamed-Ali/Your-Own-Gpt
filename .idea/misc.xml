@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.10 (Your-Own-Gpt)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (Your-Own-Gpt)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (chat-bot)" project-jdk-type="Python SDK" />
 </project>

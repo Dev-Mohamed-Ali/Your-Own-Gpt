@@ -295,33 +295,46 @@ function show_confirmation() {
 
 // Add event listener to the Clear Chat button
 function clearChatHistory() {
-    // Clear the chat history in the UI
-    $('.messages').empty();
+    // Show a confirmation dialog
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'Do you really want to clear the chat history?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, clear it!',
+        cancelButtonText: 'No, cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Proceed with clearing the chat history
+            $('.messages').empty();
 
-    // Optionally, clear the chat history in the backend using AJAX
-    $.ajax({
-        type: 'POST',
-        url: '/clear_chat_history',
-        success: function (response) {
-            Swal.fire({
-                icon: 'success',
-                title: 'All Clear',
-                text: 'Chat history cleared successfully!',
-                allowOutsideClick: false,
-                showConfirmButton: false
-                , timer: 1500, timerProgressBar: true,
-            }).then(() => {
-
-                // Process the user's name (you can send it to the server or do something else)
-// Call the function to fetch and display the greeting
-                getAndDisplayGreeting();
-
-
-            })
-            console.log('Chat history cleared successfully.');
-        },
-        error: function (xhr, status, error) {
-            console.error('Error clearing chat history:', error);
+            // Optionally, clear the chat history in the backend using AJAX
+            $.ajax({
+                type: 'POST',
+                url: '/clear_chat_history',
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'All Clear',
+                        text: 'Chat history cleared successfully!',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    }).then(() => {
+                        // Call the function to fetch and display the greeting
+                        getAndDisplayGreeting();
+                    });
+                    console.log('Chat history cleared successfully.');
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error clearing chat history:', error);
+                }
+            });
+        } else {
+            console.log('Chat history clearing canceled.');
         }
     });
 }
