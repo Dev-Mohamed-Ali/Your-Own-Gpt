@@ -143,7 +143,6 @@ def update_knowledge_base():
 
 @app.route("/")
 def home():
-    chat_history = session.get("chat_history", [])
     return render_template("index.html")
 
 
