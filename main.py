@@ -62,7 +62,7 @@ def append_message(who, message):
 
 
 def chatbot(user_input):
-    knowledge_base = load_knowledge_base('new_data.json')
+    knowledge_base = load_knowledge_base('knowledge_base.json')
     # Finds the best match using TF-IDF and cosine similarity, otherwise returns None
     best_match = find_best_match(user_input, [q["question"] for q in knowledge_base["questions"]])
     answer = get_answer_for_question(best_match, knowledge_base)
